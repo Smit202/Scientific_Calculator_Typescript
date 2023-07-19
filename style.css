@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+sub, sup { 
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+  
+sup {
+    top: -0.5em;
+}
+  
+sub {
+    bottom: -0.25em;
+}
+
+.container {
+    background-color: #F3F3F3;
+    width: 430px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.heading {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.5);
+}
+
+#headingName {
+    width: 90%;
+    height: 100%;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.heading i {
+    color: grey;
+}
+
+#history {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#history:hover {
+    background-color: #DDDDDD;
+}
+
+.calculator {
+    width: 100%;
+    height: 92%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.display {
+    width: 100%;
+    height: 22%;
+    padding: 5% 0%;
+    /* background-color: red; */
+}
+
+.input {
+    width: 100%;
+    height: 60%;
+}
+
+#number {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #F3F3F3;
+    text-align: right;
+    font-size: 26pt;
+    font-weight: bold;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+#number:focus {
+    outline: none;
+}
+
+.output {
+    width: 100%;
+    height: 40%;
+}
+
+#expression {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-right: 12px;
+    padding-left: 12px;
+    text-align: right;
+    font-size: 16pt;
+    font-weight: bold;
+    color: grey;
+    opacity: 0.7;
+}
+
+#expression:focus {
+    outline: none;
+}
+
+.format {
+    width: 100%;
+    height: 7%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    font-size: 12pt;
+}
+
+#angle, #FE {
+    width: 17%;
+    height: 100%;
+    padding: 2px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory {
+    width: 100%;
+    height: 7%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    font-size: 12pt;
+}
+
+.memory div {
+    width: 20%;
+    height: 100%;
+    padding: 2px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#MC, #MR {
+    color: rgba(128, 128, 128, 0.6);
+}
+
+.functions {
+    width: 100%;
+    height: 8%;
+    font-size: 12pt;
+    display: flex;
+    flex-direction: row;
+    background-color: #f7f7f7;
+    font-weight: 400;
+    font-size: 12pt;
+    padding-left: 6px;
+}
+
+#trigonometry, #func {
+    width: 32%;
+    height: 100%;
+    /* padding: 10px 15px; */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#trigonometryDropdown {
+    width: 80%;
+    height: 19%;
+    background-color: #F8F8F8;
+    position: relative;
+    top: -54%;  /*330px*/
+    margin-left: 6px;
+    display: none;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+#trigonometryOperations {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    display: grid;
+    gap: 2px;
+    /* border: 1px solid black; */
+    grid-template-columns: 24% 75.5%;
+    grid-template-rows: 49% 49%;
+}
+
+#inverseTrig {
+    background-color: white;
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#hyperbolicTrig {
+    background-color: white;
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#trigFunctions {
+    /* background-color: blanchedalmond; */
+    grid-area: 1 / 2 / 3 / 3;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 49% 49%;
+    gap: 2px;
+}
+
+.trigFunc {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#functionDropdown {
+    width: 60%;
+    height: 19%;
+    background-color: #F8F8F8;
+    position: relative;
+    top: -54%;  /*330px*/
+    left: 22%;
+    margin-left: 6px;
+    display: none;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+#functionOperations {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 49% 49%;
+}
+
+.normalFunc {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.operations {
+    width: 100%;
+    height: 55%;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 19% 19% 19% 19% 19%;
+    grid-template-rows: 13% 13% 13% 13% 13% 13% 13%;
+    /* justify-content: space-around; */
+    /* background-color: red; */
+    padding: 0px 6px;
+}
+
+.operations-item {
+    border-radius: 2px;
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.operations-item-number {
+    background-color: #FDFDFD;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16pt;
+    cursor: pointer;
+}
+
+#historyDisplay {
+    width: 100%;
+    height: 64%;
+    background-color: #FBFBFC;
+    position: relative;
+    top: -63%;  /*330px*/
+    /* margin-left: 6px; */
+    display: none;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+}
+
+.hist {
+    width: 100%;
+    height: 20%;
+    
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.1);
+}
+
+/* .histExp {
+    width: 100%;
+    height: 50%;
+    font-size: 12pt;
+    font-weight: bold;
+    color: rgb(128, 128, 128);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
+}
+
+.histResult {
+    width: 100%;
+    height: 50%;
+    font-size: 20pt;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
+} */
