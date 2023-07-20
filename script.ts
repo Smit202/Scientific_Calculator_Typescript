@@ -1,9 +1,9 @@
-interface HTMLElement extends EventTarget {};
+// interface HTMLElement extends EventTarget {};
 
-interface EventTargetElement extends Event {
-    // target: HTMLElement extends EventTarget;
-    target: HTMLElement
-};
+// interface EventTargetElement extends Event {
+//     // target: HTMLElement extends EventTarget;
+//     target: HTMLElement
+// };
 
 // interface EventTargetElement<T extends EventTarget> extends Event {
 //     // target: HTMLElement extends EventTarget;
@@ -54,28 +54,41 @@ trigFunctions.addEventListener('mouseup', mouseUpAction);
 functionOperations.addEventListener('mousedown', mouseDownAction);
 functionOperations.addEventListener('mouseup', mouseUpAction);
 
-format.addEventListener('mousedown', (event: EventTargetElement) => event.target.style.backgroundColor = '#DDDDDD');
-format.addEventListener('mouseup', (event: EventTargetElement) => event.target.style.backgroundColor = '#F3F3F3');
+format.addEventListener('mousedown', (event: Event) => {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = '#DDDDDD';
+});
+format.addEventListener('mouseup', (event: Event) => {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = '#F3F3F3';
+});
 
-memory.addEventListener('mousedown', (event: EventTargetElement) => event.target.style.backgroundColor = '#DDDDDD');
-memory.addEventListener('mouseup', (event: EventTargetElement) => event.target.style.backgroundColor = '#F3F3F3');
+memory.addEventListener('mousedown', (event: Event) => {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = '#DDDDDD';
+});
+memory.addEventListener('mouseup', (event: Event) => {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = '#DDDDDD'
+});
 
-historyDisplay.addEventListener('mousedown', (event: EventTargetElement) => {
+historyDisplay.addEventListener('mousedown', (event: Event) => {
+    const target = event.target as HTMLElement;
     let id: string;
-    if(event.target.className == 'histObject') id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.className == 'histObject') id = target.parentElement!.id;
+    else id = target.id;
     document.getElementById(id)!.style.backgroundColor = '#DDDDDD';
 });
 
-historyDisplay.addEventListener('mouseup', (event: EventTargetElement) => {
+historyDisplay.addEventListener('mouseup', (event: Event) => {
+    const target = event.target as HTMLElement;
     let id: string;
-    if(event.target.className == 'histObject') id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.className == 'histObject') id = target.parentElement!.id;
+    else id = target.id;
     document.getElementById(id)!.style.backgroundColor = '#FBFBFC';
 });
 
 angle.addEventListener('click', () => {
-    // angle.style.backgroundColor = '#DDDDDD';
     if(angleFlag==0) {
         angle.innerHTML = 'RAD';
         angleFlag = 1;
@@ -284,18 +297,18 @@ ops2.addEventListener('click', () => {
     }
 });
 
-operations.addEventListener("click", (event: EventTargetElement) => {
-    
+operations.addEventListener("click", (event: Event) => {
+    const target = event.target as HTMLElement;
     let num: string, id: string, isCleared: boolean;
     if(feFlag) num = (+input.value).toExponential();
     else num = input.value;
 
-    if(event.target.tagName == "svg") id = event.target.parentElement.id;
-    else if(event.target.tagName == "path") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "polygon") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "sup") id = event.target.parentElement.id;
-    else if(event.target.tagName == "sub") id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.tagName == "svg") id = target.parentElement!.id;
+    else if(target.tagName == "path") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "polygon") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "sup") id = target.parentElement!.id;
+    else if(target.tagName == "sub") id = target.parentElement!.id;
+    else id = target.id;
 
     if (exparr.at(-1)=='=') {
         exparr = [];
@@ -848,18 +861,19 @@ operations.addEventListener("click", (event: EventTargetElement) => {
     }
 });
 
-trigFunctions.addEventListener('click', (event: EventTargetElement) => {
+trigFunctions.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
     let num: string;
     let id: string, isCleared: boolean, radAngle: number;
     if(feFlag) num = (+input.value).toExponential();
     else num = input.value;
 
-    if(event.target.tagName == "svg") id = event.target.parentElement.id;
-    else if(event.target.tagName == "path") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "polygon") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "sup") id = event.target.parentElement.id;
-    else if(event.target.tagName == "sub") id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.tagName == "svg") id = target.parentElement!.id;
+    else if(target.tagName == "path") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "polygon") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "sup") id = target.parentElement!.id;
+    else if(target.tagName == "sub") id = target.parentElement!.id;
+    else id = target.id;
 
     if (exparr.at(-1)=='=') {
         exparr = [];
@@ -1409,18 +1423,19 @@ trigFunctions.addEventListener('click', (event: EventTargetElement) => {
     else {}
 });
 
-functionOperations.addEventListener('click', (event: EventTargetElement) => {
-    let num;
-    let id, isCleared;
+functionOperations.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
+    let num: string;
+    let id: string, isCleared: boolean;
     if(feFlag) num = (+input.value).toExponential();
     else num = input.value;
 
-    if(event.target.tagName == "svg") id = event.target.parentElement.id;
-    else if(event.target.tagName == "path") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "polygon") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "sup") id = event.target.parentElement.id;
-    else if(event.target.tagName == "sub") id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.tagName == "svg") id = target.parentElement!.id;
+    else if(target.tagName == "path") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "polygon") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "sup") id = target.parentElement!.id;
+    else if(target.tagName == "sub") id = target.parentElement!.id;
+    else id = target.id;
 
     if (exparr.at(-1)=='=') {
         exparr = [];
@@ -1552,9 +1567,10 @@ functionOperations.addEventListener('click', (event: EventTargetElement) => {
     }
 });
 
-memory.addEventListener('click', (event: EventTargetElement) => {
+memory.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
     let num;
-    let id = event.target.id;
+    let id = target.id;
     let memoryLength = memoryArray.length;
     if(feFlag) num = (+input.value).toExponential();
     else num = input.value;
@@ -1593,12 +1609,6 @@ historyButton.addEventListener('click', () => {
     if(historyFlag==0) {
         historyButton.style.backgroundColor = '#91C1E7';
         if(historyArray.length!=0) {
-            // let div = document.createElement('div');
-            // let exp = document.createElement('div');
-            // let result = document.createElement('div');
-            // exp.style.height = result.style.height = '50%';
-            // exp.style.textAlign = result.style.textAlign = 'right';
-            // div.className = 'hist';
 
             type styleObject = { [key: string]: string };
 
@@ -1655,10 +1665,11 @@ historyButton.addEventListener('click', () => {
     }
 });
 
-historyDisplay.addEventListener('click', (event: EventTargetElement) => {
-    let id;
-    if(event.target.className == 'histObject') id = event.target.parentElement.id;
-    else event.target.id;
+historyDisplay.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
+    let id: string;
+    if(target.className == 'histObject') id = target.parentElement!.id;
+    else id = target.id;
     exparr = historyArray[+id.slice(1)].exp.split(' ');
     exparr.pop();
     evalExparr = [];
@@ -1667,26 +1678,28 @@ historyDisplay.addEventListener('click', (event: EventTargetElement) => {
     input.value = historyArray[+id.slice(1)].result + '';
 });
 
-function mouseDownAction(event: EventTargetElement): void {
+function mouseDownAction(event: Event): void {
+    const target = event.target as HTMLElement;
     let id: string;
-    if(event.target.tagName == "svg") id = event.target.parentElement.id;
-    else if(event.target.tagName == "path") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "polygon") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "sup") id = event.target.parentElement.id;
-    else if(event.target.tagName == "sub") id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.tagName == "svg") id = target.parentElement!.id;
+    else if(target.tagName == "path") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "polygon") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "sup") id = target.parentElement!.id;
+    else if(target.tagName == "sub") id = target.parentElement!.id;
+    else id = target.id;
 
     document.getElementById(id)!.style.backgroundColor = '#91C1E7';
 }
 
-function mouseUpAction(event: EventTargetElement): void {
+function mouseUpAction(event: Event): void {
+    const target = event.target as HTMLElement;
     let id: string;
-    if(event.target.tagName == "svg") id = event.target.parentElement.id;
-    else if(event.target.tagName == "path") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "polygon") id = event.target.parentElement.parentElement.id;
-    else if(event.target.tagName == "sup") id = event.target.parentElement.id;
-    else if(event.target.tagName == "sub") id = event.target.parentElement.id;
-    else id = event.target.id;
+    if(target.tagName == "svg") id = target.parentElement!.id;
+    else if(target.tagName == "path") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "polygon") id = target.parentElement!.parentElement!.id;
+    else if(target.tagName == "sup") id = target.parentElement!.id;
+    else if(target.tagName == "sub") id = target.parentElement!.id;
+    else id = target.id;
 
     let elem = document.getElementById(id)!;
     if(['operations-item-number', 'trigFunc', 'normalFunc', 'memory'].includes(elem.className)) elem.style.backgroundColor = '#FDFDFD';
@@ -1763,6 +1776,6 @@ class HistoryObject {
 //     this.result = result;
 // }
 
-// document.getElementById('hist').addEventListener('mousedown', (event) => event.target.style.backgroundColor = '#DDDDDD');
-//             document.getElementById('hist').addEventListener('mouseup', (event) => event.target.style.backgroundColor = '#FBFBFC');
+// document.getElementById('hist').addEventListener('mousedown', (event) => target.style.backgroundColor = '#DDDDDD');
+//             document.getElementById('hist').addEventListener('mouseup', (event) => target.style.backgroundColor = '#FBFBFC');
 
